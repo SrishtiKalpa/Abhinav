@@ -9,29 +9,18 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Create a container for the chat widget on the left side
+# Chat widget in sidebar
 with st.sidebar:
     st.markdown("### Chat Support")
     st.components.v1.html(
         """
-        <div id="wotchat-container"></div>
-        <script src="https://app.wotnot.io/chat-widget/nhVP8wJYUZam165958636448p4JHOLR5.js" defer></script>
-        <style>
-            #wot-chat-widget {
-                z-index: 9999 !important;
-                position: relative !important;
-                width: 100% !important;
-                height: 600px !important;
-                border: 1px solid #e6e6e6;
-                border-radius: 8px;
-                overflow: hidden;
-            }
-            #wot-chat-widget iframe {
-                width: 100% !important;
-                height: 100% !important;
-                border: none;
-            }
-        </style>
+        <div style="width: 100%; height: 600px; border-radius: 8px; overflow: hidden;">
+            <iframe 
+                src="https://embed.wotnot.io/nhVP8wJYUZam165958636448p4JHOLR5/bot/5bdpjUQkD26L175450164352hOKAHokN?display_header=false&history_retention=false" 
+                style="width: 100%; height: 100%; border: none; border-radius: 8px;"
+                allowfullscreen>
+            </iframe>
+        </div>
         """,
         height=600
     )
