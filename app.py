@@ -1,7 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import datetime
-
 # Page configuration
 st.set_page_config(
     page_title="University Events",
@@ -10,23 +9,19 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Inject custom CSS for the chat widget
-st.markdown(
-    """
-    <style>
-    #wotchat-container {
-        z-index: 1000;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Inject the chat widget
+# Inject the WotNot chat widget
 st.components.v1.html(
     """
-    <script src="https://app.wotnot.io/chat-widget/nhVP8wJYUZam165958636448p4JHOLR5.js" defer></script>
     <div id="wotchat-container"></div>
+    <script src="https://app.wotnot.io/chat-widget/nhVP8wJYUZam165958636448p4JHOLR5.js" defer></script>
+    <style>
+        #wot-chat-widget {
+            z-index: 9999 !important;
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+        }
+    </style>
     """,
     height=0
 )
@@ -61,7 +56,7 @@ EVENTS = [
 
 # Sidebar navigation
 with st.sidebar:
-    st.image("https://via.placeholder.com/150x50?text=University+Logo", width=150)
+    st.image("https://via.placeholder.com/150x50?text=University+Logo", width=150, use_container_width=False)
     st.title("University Events")
     
     menu = option_menu(
@@ -87,7 +82,7 @@ if menu == "Home":
     Stay updated with academic, cultural, and social events organized by different departments and student groups.
     """)
     
-    st.image("https://via.placeholder.com/1200x400?text=University+Events", use_column_width=True)
+    st.image("https://via.placeholder.com/1200x400?text=University+Events", use_container_width=True)
     
     st.markdown("### Featured Events")
     for event in EVENTS[:2]:
@@ -187,7 +182,7 @@ elif menu == "About":
     - Office: Administration Building, Room 101
     """)
     
-    st.image("https://via.placeholder.com/800x300?text=University+Campus", use_column_width=True)
+    st.image("https://via.placeholder.com/800x300?text=University+Campus", use_container_width=True)
 
 # Footer
 st.divider()
